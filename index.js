@@ -1,6 +1,6 @@
 'use strict';
 
-
+require('dotenv').config();
 const mongoose = require('mongoose');
 
 const mongooseOptions = {
@@ -11,7 +11,7 @@ const mongooseOptions = {
 
 
 mongoose
-  .connect('mongodb://localhost:27017/todo', mongooseOptions)
+  .connect(process.env.MONGO, mongooseOptions)
   .catch(err => console.log(err));
 
-require('./lib/app.js').start(3000);
+require('./lib/app.js').start(process.env.PORT);
